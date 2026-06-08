@@ -3335,9 +3335,10 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Playerslist,v.Name) 
 end
 
-local drop = Main:Dropdown("Select Player ","Click To Select", Playerslist,function(t)
-  PlayerTP = t
+local drop = Main:Dropdown("Select Player ", Playerslist, function(t)
+    PlayerTP = t
 end)
+
 
 Main:Button("Refresh Dropdown",{"Refresh Dropdown"}, function()
   drop:Refresh(Playerslist)
