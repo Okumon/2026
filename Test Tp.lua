@@ -3340,8 +3340,14 @@ local drop = Main:Dropdown("Select Player ", Playerslist, function(t)
 end)
 
 
-Main:Button("Refresh Dropdown",{"Refresh Dropdown"}, function()
-  drop:Refresh(Playerslist)
+Main:Button("Refresh Dropdown", {"Refresh Dropdown"}, function()
+    Playerslist = {}
+
+    for _,v in pairs(game:GetService("Players"):GetPlayers()) do
+        table.insert(Playerslist, v.Name)
+    end
+
+    drop:Refresh(Playerslist)
 end)
 
 Main:Button("Click To TP" , function()
@@ -3350,6 +3356,9 @@ end)
 
 Main:Toggle("Auto Tp ", function(t)
   _G.TPPlayer = t
+while _G.TPPlayer do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end
 end)
 
 Main:Toggle("Spectate Player", _G.Spectate_Player, function(value)
