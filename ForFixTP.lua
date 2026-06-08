@@ -3367,7 +3367,7 @@ Main:Button("Refresh Dropdown", {"Refresh Dropdown"}, function()
     drop:Refresh(Playerslist)
 
     print("=============================")
-
+    print(drop.Refresh)
 end)
 
 Main:Button("Click To TP", function()
@@ -3391,7 +3391,6 @@ Main:Button("Click To TP", function()
 end)
 
 Main:Toggle("Auto Tp ", function(t)
-
     _G.TPPlayer = t
 
     print("Auto TP Toggle =", t)
@@ -3399,32 +3398,14 @@ Main:Toggle("Auto Tp ", function(t)
     while _G.TPPlayer do
         task.wait(1)
 
-        print("========== AUTO TP ==========")
-        print("PlayerTP =", PlayerTP)
+        print("AUTO LOOP RUNNING")
 
         local target = game.Players:FindFirstChild(PlayerTP)
 
-        print("Target =", target)
-
         if target then
-            print("Character =", target.Character)
-
-            if target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
-
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
-                    target.Character.HumanoidRootPart.CFrame
-
-                print("AUTO TP SUCCESS")
-            else
-                warn("NO HRP")
-            end
-        else
-            warn("PLAYER NOT FOUND")
+            print("TARGET FOUND")
         end
-
-        print("=============================")
     end
-
 end)
 
 Main:Toggle("Spectate Player", _G.Spectate_Player, function(value)
